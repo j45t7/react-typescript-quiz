@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { QuestionCard } from './components/QuestionCard';
 import { fetchQuizQuestions } from './API'
 //Types
-import { QuestionState, Difficulty } from './API'
+import { QuestionsState, Difficulty } from './API'
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -14,7 +14,7 @@ const TOTAL_QUESTIONS = 10
 
 const App = () =>  {
   const [loading, setLoading] = useState(false)
-  const [questions, setQuestions] = useState<QuestionState[]>([])
+  const [questions, setQuestions] = useState<QuestionsState[]>([])
   const [number, setNumber] = useState(0)
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([])
   const [score, setScore] = useState(0)
@@ -59,7 +59,16 @@ const App = () =>  {
     }
   }
 
-  const nextQuestion = () => {}
+  const nextQuestion = () => {
+    //next question
+    const nextQuestion = number + 1;
+
+    if(nextQuestion === TOTAL_QUESTIONS){
+      setGameOver(true);
+    } else {
+      setNumber(nextQuestion);
+    }
+  }
 
   return (
     <div>
