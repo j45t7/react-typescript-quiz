@@ -3,6 +3,8 @@ import { QuestionCard } from './components/QuestionCard';
 import { fetchQuizQuestions } from './API'
 //Types
 import { QuestionsState, Difficulty } from './API'
+//Styles
+import { GlobalStyle, Wrapper } from './App.styles';
 
 export type AnswerObject = {
   question: string;
@@ -71,13 +73,14 @@ const App = () =>  {
   }
 
   return (
-    <div>
+    <>
+      <GlobalStyle />
+      <Wrapper>
       <h1>React Quiz</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button className='start' onClick={startTriva}>Start</button>
-      ) : null
-      }
-      {!gameOver && <p className="score">Score:</p>}
+      ) : null}
+      {!gameOver && <p className="score">Score: {score}</p>}
       {loading && <p>Loading Questions...</p> }
       {!loading && !gameOver && (
         <QuestionCard
@@ -90,9 +93,10 @@ const App = () =>  {
         />
       )}
       {!gameOver && !loading && userAnswers.length === number + 1 && number !== TOTAL_QUESTIONS - 1 ? (
-        <button className='next' onClick={nextQuestion}>Next Question</button>
+      <button className='next' onClick={nextQuestion}>Next Question</button>
       ) : null }
-    </div>
+      </Wrapper>
+    </>
   );
 }
 
