@@ -2,10 +2,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 import BGImage from './images/horses.jpeg'
 
 export const GlobalStyle = createGlobalStyle`
-  body, html {
-    min-height:100%;
+  html {
     height:100%;
-    overflow-x:hidden;
     display:block;
   }
 
@@ -45,7 +43,7 @@ export const Wrapper = styled.div`
     font-weight: 400;
     font-size: 70px;
     text-align: center;
-    margin: 5rem 2rem;
+    margin: 3rem 2rem;
 
   }
 
